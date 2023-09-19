@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Ubifood",
-    "slug": "Ubifood",
+    "name": "bare_ts",
+    "slug": "bare_ts",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
