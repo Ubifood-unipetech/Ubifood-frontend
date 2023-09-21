@@ -20,7 +20,7 @@ export default function SignIn({navigation}) {
       <Text style={styles.formTitle}>login no unifood</Text>
       <TextInput style={styles.formInput}
         placeholder="Informe o username"
-        keyboardType="email-address"
+        keyboardType="default"
         autoCapitalize="none"
         autoComplete="username"
         value={username}
