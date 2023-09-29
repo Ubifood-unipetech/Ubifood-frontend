@@ -40,10 +40,13 @@ export default function SignIn({navigation}) {
         <Text style={styles.textButton}>logar</Text>
       </Pressable>
       <View style={styles.subContainer}>
-        <Pressable style={styles.subButton}>
+        {/* <Pressable style={styles.subButton}>
           <Text style={styles.subTextButton}>esqueci minha senha</Text>
-        </Pressable>
-        <Pressable style={styles.subButton}>
+        </Pressable> */}
+        <Pressable 
+          style={styles.subButton}
+          onPress={() => navigation.navigate('Registration')}
+        >
           <Text style={styles.subTextButton}>novo user</Text>
         </Pressable>
       </View>

@@ -4,8 +4,6 @@ import {styles} from './styles';
 import axios from "axios";
 import {AuthContext} from '../../contexts/auth'
 
-const baseUrl = process.env.BASEURL
-
 export default function HomeScreen() {
   // const nome = useContext(AuthContext)
   const {nome, user} = useContext(AuthContext)

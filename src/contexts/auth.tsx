@@ -58,8 +58,32 @@ function AuthProvider({children}){
     
     }
 
+    async function registration(name, lastName, username, pass){
+        try {
+            const url = `${baseUrl}/api/register/`;
+            const userData = {
+              username: username,
+              first_name: name,
+              last_name: lastName,
+              password: pass,
+            };
+            const response = await axios.post(url, userData);
+            console.log("Cadastro bem-sucedido!", response.data);
+      
+            // Redireciona o usuário para a tela de login ou executa outras ações necessárias
+            navigation.navigate('SignIn');
+      
+            // Exibe uma mensagem para o usuário
+            alert('Cadastro bem-sucedido! Faça login para continuar.');
+          } catch (error) {
+            // Lida com erros, se ocorrerem
+            console.error("Erro ao fazer cadastro:", error);
+            alert('Erro ao fazer cadastro. Tente novamente mais tarde.');
+          }
+    }
+
     return(
-        <AuthContext.Provider value={{signIn, user, logout}}>
+        <AuthContext.Provider value={{signIn, user, logout, registration}}>
             {children}
         </AuthContext.Provider>
     )
