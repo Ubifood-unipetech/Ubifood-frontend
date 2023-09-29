@@ -6,5 +6,18 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    formButton:{
+        backgroundColor: 'navy',
+        width: '80%',
+        margin: 10,
+        padding:10,
+        borderRadius: 10,
+        alignItems: 'center'
+      },
+      textButton:{
+        color:'white',
+        fontSize: 20,
+        fontWeight: 'bold'
+      },
   });
 

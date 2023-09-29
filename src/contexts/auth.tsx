@@ -38,8 +38,28 @@ function AuthProvider({children}){
         }
     }
 
+    function logout(user){
+        const url = `${baseUrl}/api/logout/`;
+
+        const headers = {
+        Authorization: `Bearer ${user.access}`,
+        };
+
+        axios
+        .delete(url, { headers })
+        .then((response) => {
+            console.log(`Logout bem-sucedido! tchau ${user.username}`, response.data);
+            navigation.navigate('SignIn')
+            alert(`até breve ${user.username} 👋`)
+        })
+        .catch((error) => {
+            console.error("Erro ao fazer logout:", error);
+        });
+    
+    }
+
     return(
-        <AuthContext.Provider value={{signIn, user}}>
+        <AuthContext.Provider value={{signIn, user, logout}}>
             {children}
         </AuthContext.Provider>
     )
