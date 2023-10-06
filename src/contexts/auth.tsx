@@ -82,8 +82,16 @@ function AuthProvider({children}){
           }
     }
 
+    async function searchRestaurants(text){
+        const response = await axios.get(`${baseUrl}/api/restaurants`);
+        // Selecione apenas o campo results
+        const results = response.data.results.map((result) => result);
+        const filteredResults = results.filter((result) => result.name.startsWith(text));
+        console.log(filteredResults);
+    }
+
     return(
-        <AuthContext.Provider value={{signIn, user, logout, registration}}>
+        <AuthContext.Provider value={{signIn, user, logout, registration, searchRestaurants}}>
             {children}
         </AuthContext.Provider>
     )

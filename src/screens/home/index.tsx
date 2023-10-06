@@ -3,6 +3,7 @@ import {Pressable, Text, View } from "react-native";
 import {styles} from './styles';
 import axios from "axios";
 import {AuthContext} from '../../contexts/auth'
+import MainHomeInput from "../../components/mainHomeInput";
 
 export default function HomeScreen() {
   // const nome = useContext(AuthContext)
@@ -15,6 +16,7 @@ export default function HomeScreen() {
 
     return (
       <View style={styles.container}>
+        <MainHomeInput/>
         <Text>Home Screen</Text>
         {/* <Text>Bem vindo {nome['nome']}</Text> */}
         <Text>Bem vindo {nome}</Text>
