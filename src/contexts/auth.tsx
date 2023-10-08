@@ -9,6 +9,7 @@ function AuthProvider({children}){
 
     const [user, setUser] = useState();
     const navigation = useNavigation();
+    const [pesqRestaurants, setPesqRestaurants] = useState([]);
 
     async function signIn(username, password){
         try{
@@ -82,16 +83,19 @@ function AuthProvider({children}){
           }
     }
 
-    async function searchRestaurants(text){
+    async function searchRestaurants(text: string){
         const response = await axios.get(`${baseUrl}/api/restaurants`);
         // Selecione apenas o campo results
-        const results = response.data.results.map((result) => result);
-        const filteredResults = results.filter((result) => result.name.startsWith(text));
+        const results = response.data.results.map((result: any) => result);
+        const filteredResults = results.filter((result: any) => result.name.startsWith(text));
         console.log(filteredResults);
+        setPesqRestaurants(filteredResults);
+        console.log(`STATE RESTAURANTES ${JSON.stringify(pesqRestaurants)}`)
+        navigation.navigate('Restaurants')
     }
 
     return(
-        <AuthContext.Provider value={{signIn, user, logout, registration, searchRestaurants}}>
+        <AuthContext.Provider value={{signIn, user, logout, registration, searchRestaurants, pesqRestaurants}}>
             {children}
         </AuthContext.Provider>
     )
