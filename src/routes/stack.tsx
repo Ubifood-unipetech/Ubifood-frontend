@@ -7,6 +7,7 @@ import SignIn  from '../screens/signIn';
 import Home from '../screens/home';
 import Registration from '../screens/registration';
 import Restaurants from '../screens/restaurants';
+import RestaurantProducts from '../screens/restaurantProducts'
 
 import AuthProvider from "../contexts/auth";
 
@@ -21,6 +22,7 @@ export default function StackComponent() {
                 <Stack.Screen name="Home" component={Home} />
                 <Stack.Screen name="Registration" component={Registration} />
                 <Stack.Screen name="Restaurants" component={Restaurants} />
+                <Stack.Screen name="RestaurantProducts" component={RestaurantProducts} />
             </Stack.Navigator>
         </AuthProvider>
     </NavigationContainer>

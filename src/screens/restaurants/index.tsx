@@ -1,13 +1,22 @@
 import React, { useContext } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Pressable, Text, View } from 'react-native';
 import { AuthContext } from '../../contexts/auth';
 
 
-const Item = ({restaurant}: ItemProps) => (
+
+function Item ({id, restaurant}: ItemProps) {
+    const {detailRestaurantProducts} = useContext(AuthContext)
+    return (
     <View>
-      <Text>{restaurant}</Text>
+        <Pressable onPress={() => {
+            console.log(`id: ${id} - restaurante: ${restaurant}`)
+            detailRestaurantProducts(id)
+            }}>
+            <Text>{restaurant}</Text>
+        </Pressable>
     </View>
-);
+)
+}
 
 export default function Restaurants() {
     const {pesqRestaurants} = useContext(AuthContext)
@@ -16,7 +25,7 @@ export default function Restaurants() {
             <Text>RESTAURANTES</Text>
             <FlatList
             data={pesqRestaurants}
-            renderItem={({item}) => <Item restaurant={item.name} />}
+            renderItem={({item}) => <Item id={item.id} restaurant={item.name}/>}
             keyExtractor={item => item.id}
             />
         </View>
