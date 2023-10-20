@@ -5,13 +5,15 @@ import {styles} from './styles'
 
 export default function RestaurantProducts({navigation}) {
     const {restaurantProducts} = useContext(AuthContext)
+
+    function showOnMap(){
+        return  navigation.push('Home')
+    }
+
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <View>
-                <Pressable style={styles.formButton} onPress={() => navigation.navigate('Home')}>
-                    <Text style={styles.textButton}>HOME</Text>
-                </Pressable>
-                <Pressable style={styles.formButton}>
+                <Pressable style={styles.formButton} onPress={showOnMap}>
                     <Text style={styles.textButton}>Mostrar no mapa</Text>
                 </Pressable>
             </View>

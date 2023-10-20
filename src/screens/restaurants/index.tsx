@@ -4,15 +4,21 @@ import { AuthContext } from '../../contexts/auth';
 
 
 
-function Item ({id, restaurant}: ItemProps) {
+function Item ({id, name, coordinates}: ItemProps) {
     const {detailRestaurantProducts} = useContext(AuthContext)
+    const {mapRegion, setMapRegion} = useContext(AuthContext);
     return (
     <View>
         <Pressable onPress={() => {
-            console.log(`id: ${id} - restaurante: ${restaurant}`)
+             setMapRegion({
+                latitude: coordinates[1],
+                longitude: coordinates[0],
+                latitudeDelta: 0.0070,
+                longitudeDelta: 0.0070,
+            });
             detailRestaurantProducts(id)
             }}>
-            <Text>{restaurant}</Text>
+            <Text>{name}</Text>
         </Pressable>
     </View>
 )
@@ -25,7 +31,7 @@ export default function Restaurants() {
             <Text>RESTAURANTES</Text>
             <FlatList
             data={pesqRestaurants}
-            renderItem={({item}) => <Item id={item.id} restaurant={item.name}/>}
+            renderItem={({item}) => <Item id={item.id} name={item.name} coordinates={item.coordinates.coordinates}/>}
             keyExtractor={item => item.id}
             />
         </View>

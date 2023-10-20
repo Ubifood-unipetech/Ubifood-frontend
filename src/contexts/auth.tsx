@@ -1,4 +1,4 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useState, useEffect} from "react";
 import {useNavigation} from '@react-navigation/native'
 import axios from "axios";
 export const AuthContext = createContext({})
@@ -11,6 +11,9 @@ function AuthProvider({children}){
     const navigation = useNavigation();
     const [pesqRestaurants, setPesqRestaurants] = useState([]);
     const [restaurantProducts, setRestaurantProducts] = useState([]);
+    const [location, setLocation] = useState([]);
+    const [mapRegion, setMapRegion] = useState([]);
+
 
     async function signIn(username, password){
         try{
@@ -19,7 +22,6 @@ function AuthProvider({children}){
                     username: username,
                     password: password,
                 });
-                console.log(`data => ${JSON.stringify(response.data)}`)
                 const { access } = response.data;
                 if (access) {
                     setUser({
@@ -50,7 +52,6 @@ function AuthProvider({children}){
         axios
         .delete(url, { headers })
         .then((response) => {
-            console.log(`Logout bem-sucedido! tchau ${user.username}`, response.data);
             navigation.navigate('SignIn')
             alert(`até breve ${user.username} 👋`)
         })
@@ -69,9 +70,7 @@ function AuthProvider({children}){
               last_name: lastName,
               password: pass,
             };
-            const response = await axios.post(url, userData);
-            console.log("Cadastro bem-sucedido!", response.data);
-      
+            const response = await axios.post(url, userData);      
             // Redireciona o usuário para a tela de login ou executa outras ações necessárias
             navigation.navigate('SignIn');
       
@@ -85,27 +84,19 @@ function AuthProvider({children}){
     }
 
     async function searchRestaurants(text: string){
-        const response = await axios.get(`${baseUrl}/api/restaurants`);
-        // Selecione apenas o campo results
-        const results = response.data.results.map((result: any) => result);
-        const filteredResults = results.filter((result: any) => result.name.startsWith(text));
-        console.log(filteredResults);
-        setPesqRestaurants(filteredResults);
-        console.log(`STATE RESTAURANTES ${JSON.stringify(pesqRestaurants)}`)
+        const response = await axios.get(`${baseUrl}/api/restaurants?filter="name__icontains":"${text}"`);
+        setPesqRestaurants(response.data.results);
         navigation.navigate('Restaurants')
     }
 
     async function detailRestaurantProducts(restaurantId: number){
-        const response = await axios.get(`${baseUrl}/api/products/`);
-        const results = response.data.results.map((result: any) => result);
-        const filteredResults = results.filter((result: any) => result.restaurant == restaurantId);
-        setRestaurantProducts(filteredResults)
-        console.log(`STATE products ${JSON.stringify(restaurantProducts)}`)
+        const response = await axios.get(`${baseUrl}/api/products?filter="restaurant":${restaurantId}/`);
+        setRestaurantProducts(response.data.results)
         navigation.navigate('RestaurantProducts')
     }
 
     return(
-        <AuthContext.Provider value={{signIn, user, logout, registration, searchRestaurants, pesqRestaurants, detailRestaurantProducts, restaurantProducts}}>
+        <AuthContext.Provider value={{signIn, user, setMapRegion, mapRegion, location, setLocation, logout, registration, searchRestaurants, pesqRestaurants, detailRestaurantProducts, restaurantProducts}}>
             {children}
         </AuthContext.Provider>
     )

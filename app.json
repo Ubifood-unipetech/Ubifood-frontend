@@ -5,6 +5,13 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDMsIW3Oth9Hz8CyIixinbld3_u_FJILB4"
+        }
+      }
+    }
   }
 }

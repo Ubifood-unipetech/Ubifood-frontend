@@ -12,8 +12,9 @@ export const styles = StyleSheet.create({
         borderColor: '#000',
         height: 40,
         borderRadius: 5,
-        margin: 10,
-        width: '80%',
+        marginTop: 11.8,
+        width: '70%',
+        zIndex: 1,
     },
     textInput: {
         flex: 1,

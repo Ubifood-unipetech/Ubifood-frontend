@@ -4,13 +4,11 @@ import {styles} from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import {AuthContext} from '../../contexts/auth'
 
-const MainHomeInput = () => {
+const MainHomeInput = (onUpdate) => {
     const {searchRestaurants} = useContext(AuthContext)
     const [text, setText] = useState('');
 
     const handleSearch = () => {
-        // Handle searching with the text input
-        console.log(`Searching for text: ${text}`);
         searchRestaurants(text)
     };
 
@@ -21,7 +19,7 @@ const MainHomeInput = () => {
                     style={styles.textInput}
                     onChangeText={setText}
                     value={text}
-                    placeholder="Search"
+                    placeholder="pesquise um restaurante"
                 />
                 <Ionicons
                     name="search"
