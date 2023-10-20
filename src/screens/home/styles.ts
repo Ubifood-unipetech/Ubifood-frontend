@@ -9,14 +9,17 @@ export const styles = StyleSheet.create({
   },
 
   formButton: {
-    backgroundColor: 'white',
-    width: '100%',
+    backgroundColor: '#151E27',
     padding: 10,
+    width: 136,
+    height: 50,
+    marginBottom: 10,
+    borderRadius: 14,
     alignItems: 'center',
     zIndex: 1,
   },
   textButton: {
-    color: 'black',
+    color: 'white',
     fontSize: 20,
     fontWeight: 'bold',
     textTransform: "uppercase",
