@@ -22,6 +22,7 @@ function AuthProvider({children}){
                     username: username,
                     password: password,
                 });
+                
                 const { access } = response.data;
                 if (access) {
                     setUser({
@@ -38,6 +39,7 @@ function AuthProvider({children}){
             }
         }catch (error) {
             console.error('Erro ao fazer login:', error);
+            console.log(error.message)
             alert('Erro ao fazer login. Tente novamente mais tarde.');
         }
     }
