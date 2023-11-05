@@ -22,6 +22,7 @@ function AuthProvider({children}){
                     username: username,
                     password: password,
                 });
+                
                 const { access } = response.data;
                 if (access) {
                     setUser({
@@ -38,6 +39,7 @@ function AuthProvider({children}){
             }
         }catch (error) {
             console.error('Erro ao fazer login:', error);
+            console.log(error.message)
             alert('Erro ao fazer login. Tente novamente mais tarde.');
         }
     }
@@ -90,7 +92,7 @@ function AuthProvider({children}){
     }
 
     async function detailRestaurantProducts(restaurantId: number){
-        const response = await axios.get(`${baseUrl}/api/products?filter="restaurant":${restaurantId}/`);
+        const response = await axios.get(`${baseUrl}/api/products?filter="restaurant":${restaurantId}`);
         setRestaurantProducts(response.data.results)
         navigation.navigate('RestaurantProducts')
     }

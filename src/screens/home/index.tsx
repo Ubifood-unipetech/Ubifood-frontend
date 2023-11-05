@@ -40,6 +40,7 @@ export default function HomeScreen({navigation}) {
         }
       };
       const response = await axios.get(endpoint, headers);
+      console.log(response)
       setResponse(response.data.results);
       if (!mapRegion.latitude){
         await Location.requestForegroundPermissionsAsync();
