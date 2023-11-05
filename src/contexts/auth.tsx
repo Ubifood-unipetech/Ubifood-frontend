@@ -39,7 +39,6 @@ function AuthProvider({children}){
             }
         }catch (error) {
             console.error('Erro ao fazer login:', error);
-            console.log(error.message)
             alert('Erro ao fazer login. Tente novamente mais tarde.');
         }
     }
