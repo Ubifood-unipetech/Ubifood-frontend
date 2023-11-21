@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between', // Align items at the top and bottom with space in between
     margin: 0,
+    fontFamily: 'Roboto',
   },
 
   formButton: {
