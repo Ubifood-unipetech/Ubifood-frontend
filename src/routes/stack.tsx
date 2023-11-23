@@ -7,7 +7,7 @@ import SignIn from '../screens/signIn';
 import Home from '../screens/home';
 import Registration from '../screens/registration';
 import Restaurants from '../screens/restaurants';
-import RestaurantProducts from '../screens/restaurantProducts'
+import RestaurantProducts from "../screens/restaurantProducts";
 
 import AuthProvider from "../contexts/auth";
 
@@ -36,10 +36,10 @@ export default function StackComponent() {
       <AuthProvider>
         <Stack.Navigator>
           <Stack.Screen name="SignIn" component={SignIn} options={{ header: () => null }} />
-          <Stack.Screen name="Home" component={Home} options={({ navigation }) => ({ headerStyle: { backgroundColor: "#151E27" }, title: "", headerLeft: () => <Arrow navigation={navigation} />, })} />
+          <Stack.Screen name="Home" component={Home} options={({ navigation }) => ({ headerStyle: { backgroundColor: "#151E27" }, title: "" })} />
           <Stack.Screen name="Registration" component={Registration} options={{ header: () => null }} />
-          <Stack.Screen name="Restaurants" component={Restaurants} />
-          <Stack.Screen name="RestaurantProducts" component={RestaurantProducts} />
+          <Stack.Screen name="Restaurants" component={Restaurants} options={({ navigation }) => ({ headerStyle: { backgroundColor: "#151E27" }, title: "", headerLeft: () => <Arrow navigation={navigation} />, })} />
+          <Stack.Screen name="RestaurantProducts" component={RestaurantProducts} options={({ navigation }) => ({ headerStyle: { backgroundColor: "#151E27" }, title: "", headerLeft: () => <Arrow navigation={navigation} />, })} />
         </Stack.Navigator>
       </AuthProvider>
     </NavigationContainer>

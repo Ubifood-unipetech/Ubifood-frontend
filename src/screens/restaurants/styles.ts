@@ -6,8 +6,9 @@ export const styles = StyleSheet.create({
         backgroundColor: '#f4f4f8',
     },
     header: {
-        alignItems: 'center',
         marginBottom: 20,
+        borderBottomWidth: 2,       // A subtle line between items
+        borderBottomColor: '#e0e0e0', 
     },
     itemContainer: {
         padding: 10,
@@ -17,6 +18,10 @@ export const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 5,
         elevation: 1,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 25,
     },
     itemTitle: {
         fontSize: 16,
@@ -26,5 +31,14 @@ export const styles = StyleSheet.create({
     itemCoordinates: {
         fontSize: 14,
         color: '#777',
+    },
+    text: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    image: {
+        width: 36,
+        height: 36,
     }
 });

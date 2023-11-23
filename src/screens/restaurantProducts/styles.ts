@@ -9,43 +9,62 @@ export const styles = StyleSheet.create({
     header: {
         alignItems: 'center',
         marginBottom: 20,
+        borderBottomWidth: 2,       // A subtle line between items
+        borderBottomColor: '#e0e0e0', 
     },
     formButton: {
-        backgroundColor: '#4A90E2',  // Using a softer blue
-        width: '100%',   // Using full width to be more touch-friendly
+        backgroundColor: 'black',
+        width: '50%',
         padding: 15,
-        borderRadius: 5,
+        borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        elevation: 2,    // For a slight shadow effect
+        elevation: 2,
     },
     textButton: {
         color: 'white',
         fontSize: 18,    // Slightly reduced font size for elegance
-        fontWeight: '500' // Not as bold, to look smoother
+        fontWeight: '600',
+        textTransform: 'uppercase', // Uppercase text for consistency
+
     },
     productsTitle: {
-        fontSize: 20,
+        fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 10,
         alignSelf: 'flex-start',
     },
+    restaurantTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        alignSelf: 'center',
+    },
     itemContainer: {
       padding: 10,
-      borderBottomWidth: 1,       // A subtle line between items
+      borderBottomWidth: 2,       // A subtle line between items
       borderBottomColor: '#e0e0e0', // Light gray line color
       marginBottom: 10,
-      backgroundColor: 'white',   // White background for each item
       borderRadius: 5,            // Soft rounding of the corners
-      elevation: 1,               // Slight shadow for a 3D effect
-  },
+      elevation: 1,
+      backgroundColor: 'white',   // White background
+    },
   itemLabel: {
       fontSize: 16,
       fontWeight: 'bold',
       marginBottom: 5,            // Space between label and description
   },
   itemDesc: {
-      fontSize: 14,
-      color: '#777',              // Gray color for description
+    fontSize: 14,
+    color: '#777',             // Gray color for description
+    marginBottom: 5,
+    },
+  ItemPrice: {
+    fontSize: 16,
+    fontWeight: 'bold',
+
+  },
+  buttonContainer: {
+    alignItems: 'center',
   }
 });
