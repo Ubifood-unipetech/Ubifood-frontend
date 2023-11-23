@@ -95,7 +95,8 @@ function AuthProvider({ children }) {
     async function detailRestaurantProducts(restaurantId: number) {
         const response = await axios.get(`${baseUrl}/api/products?filter="restaurant":${restaurantId}`);
         setRestaurantProducts(response.data.results)
-        navigation.navigate('RestaurantProducts')
+        const restaurantData = pesqRestaurants.find((restaurant) => restaurant.id === restaurantId);
+        navigation.navigate('RestaurantProducts', { restaurantData: restaurantData })
     }
 
     return (

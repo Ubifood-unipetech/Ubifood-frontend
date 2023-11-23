@@ -3,9 +3,10 @@ import { View, Text, FlatList, Pressable } from 'react-native';
 import { AuthContext } from '../../contexts/auth';
 import { styles } from './styles'
 
-export default function RestaurantProducts({ navigation }) {
+export default function RestaurantProducts({ navigation, route }) {
     const { restaurantProducts } = useContext(AuthContext)
-
+    const selectedRestaurant = route.params.restaurantData
+    
     function showOnMap() {
         return navigation.push('Home')
     }
@@ -13,6 +14,7 @@ export default function RestaurantProducts({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
+                <Text style={styles.restaurantTitle}>{selectedRestaurant.name}</Text>
                 <Text style={styles.productsTitle}>Cardápio</Text>
             </View>
             <FlatList

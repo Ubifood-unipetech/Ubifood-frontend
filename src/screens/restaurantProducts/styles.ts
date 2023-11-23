@@ -34,6 +34,12 @@ export const styles = StyleSheet.create({
         marginBottom: 10,
         alignSelf: 'flex-start',
     },
+    restaurantTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        alignSelf: 'center',
+    },
     itemContainer: {
       padding: 10,
       borderBottomWidth: 2,       // A subtle line between items
