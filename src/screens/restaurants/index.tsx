@@ -5,7 +5,7 @@ import { styles } from './styles';
 
 
 
-function Item({ id, name, coordinates }: ItemProps) {
+function Item({ id, name, coordinates, banner }: ItemProps) {
     const { detailRestaurantProducts } = useContext(AuthContext)
     const { mapRegion, setMapRegion } = useContext(AuthContext);
     return (
@@ -22,7 +22,7 @@ function Item({ id, name, coordinates }: ItemProps) {
                     detailRestaurantProducts(id);
                 }}
             >
-                <Image source={require("../../assets/restaurant_default_icon.png")} style={styles.image}></Image>
+                <Image source={ banner ? {uri: banner} : require("../../assets/restaurant_default_icon.png")} style={styles.image}></Image>
                 <Text style={styles.itemTitle}>{name}</Text>
             </Pressable>
         </View>
@@ -40,7 +40,7 @@ export default function Restaurants() {
 
             <FlatList
                 data={pesqRestaurants}
-                renderItem={({ item }) => <Item id={item.id} name={item.name} coordinates={item.coordinates.coordinates} />}
+                renderItem={({ item }) => <Item id={item.id} name={item.name} coordinates={item.coordinates.coordinates} banner={item.banner} />}
                 keyExtractor={item => item.id}
             />
         </View>
